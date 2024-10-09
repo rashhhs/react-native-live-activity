@@ -4,7 +4,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
-#import <React/RCTAppSetupUtils.h>
+/*#import <React/RCTAppSetupUtils.h>*/
 
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
@@ -29,7 +29,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  RCTAppSetupPrepareApp(application);
+/*RCTAppSetupPrepareApp(application);*/
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
 
@@ -41,7 +41,10 @@
   bridge.surfacePresenter = _bridgeAdapter.surfacePresenter;
 #endif
 
-  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"main", nil);
+/*UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"main", nil);*/
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
+                                            moduleName:@"main"
+                                            initialProperties:nil];
 
   if (@available(iOS 13.0, *)) {
     rootView.backgroundColor = [UIColor systemBackgroundColor];

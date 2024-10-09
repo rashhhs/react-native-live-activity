@@ -3,7 +3,8 @@ import * as React from 'react';
 import { StyleSheet, View, Text, SafeAreaView, Button } from 'react-native';
 import ActivitiesList from './ActivitiesList';
 import Row from './Row';
-import LiveActivityManager from 'react-native-live-activity';
+import { NativeModules } from 'react-native';
+const { LiveActivity } = NativeModules;
 
 type StartLiveActivityParams = {
   status: string;
@@ -11,7 +12,7 @@ type StartLiveActivityParams = {
   expectedDeliveryTime: string;
 };
 
-const liveActivity = new LiveActivityManager<StartLiveActivityParams>();
+const liveActivity = LiveActivity;
 
 export default function App() {
   const [status, setStatus] = React.useState<string>('Packing');
